@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+</head>
+<body>
+    <h1>Регистрация</h1>
+    {% if info.errors %}
+    <ul style="color: red;">
+        {% for error in info.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+    {% if form %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    {% else %}
+        <form method="post">
+            {% csrf_token %}
+            <p>
+                <label for="username">Имя пользователя:</label><br>
+                <input type="text" name="username" id="username" value="{{ info.username|default:'' }}">
+            </p>
+            <p>
+                <label for="password">Пароль:</label><br>
+                <input type="password" name="password" id="password" value="{{ info.password|default:'' }}">
+            </p>
+            <p>
+                <label for="repeat_password">Повторите пароль:</label><br>
+                <input type="password" name="repeat_password" id="repeat_password" value="{{ info.repeat_password|default:'' }}">
+            </p>
+            <p>
+                <label for="age">Возраст:</label><br>
+                <input type="number" name="age" id="age" value="{{ info.age|default:'' }}">
+            </p>
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    {% endif %}
+    <br>
+    <a href="{% url 'main' %}"><button>Вернуться обратно на главную страницу</button></a>
+</body>
+</html>

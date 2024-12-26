@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <nav>
+        {% block pagename %}{% endblock %}
+        {% block menu %}
+            <a href="{% url 'main' %}">Главная страница</a>
+            <br>
+            <a href="{% url 'shop' %}">Магазин</a>
+            <br>
+            <a href="{% url 'cart' %}">Корзина</a>
+            <br>
+            <a href="{% url 'sign_up_html' %}">Форма регистрации HTML</a>
+            <br>
+            <a href="{% url 'sign_up_django' %}">Форма регистрации django</a>
+        {% endblock %}
+    </nav>
+
+    <hr>
+
+    {% block content %} {% endblock %}
+</body>
+</html>
