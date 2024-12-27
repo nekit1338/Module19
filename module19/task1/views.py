@@ -3,17 +3,6 @@ from django.shortcuts import render, redirect
 from .forms import UserRegister
 from .models import *
 
-#  data = {
-#      'games': [
-#          game.title for game in Game.objects.all()
-#      ],
-#      'descriptions': [
-#          game.description for game in Game.objects.all()
-#      ],
-#      'costs': [
-#          game.cost for game in Game.objects.all()
-#      ],
-#  }
 
 data = {
         'games': Game.objects.all()

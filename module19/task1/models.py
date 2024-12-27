@@ -16,6 +16,10 @@ class Buyer(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = 'Покупатель'
+        verbose_name_plural = 'Покупатели'
+
 
 class Game(models.Model):
     title = models.CharField(max_length=255)
@@ -36,6 +40,9 @@ class Game(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'Игра'
+        verbose_name_plural = 'Игры'
 
 #  """Список использованных команд в shell"""
 #
