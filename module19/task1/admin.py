@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Buyer, Game
+from .models import Buyer, Game, News
 
 
 @admin.register(Buyer)
@@ -19,3 +19,6 @@ class GameAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'title')
     search_fields = ('title',)
     list_per_page = 20
+
+
+admin.site.register(News)

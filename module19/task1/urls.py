@@ -10,4 +10,5 @@ urlpatterns = [
     path('cart/clear', views.clear_cart, name='clear_cart'),
     path('sign_up_html', views.sign_up_by_html, name='sign_up_html'),
     path('django_sign_up/', views.sign_up_by_django, name='sign_up_django'),
+    path('platform/news', views.show_news, name='news'),
 ]

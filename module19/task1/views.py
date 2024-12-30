@@ -2,11 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import UserRegister
 from .models import *
-
+from django.core.paginator import Paginator
 
 data = {
-        'games': Game.objects.all()
-    }
+    'games': Game.objects.all()
+}
 
 
 def show_platform(request):
@@ -96,3 +96,11 @@ def sign_up_by_html(request):
             return HttpResponse(f'Приветствуем, {username}!')
 
     return render(request, 'registration_page.html', {'info': info})
+
+
+def show_news(request):
+    news = News.objects.all().order_by('date')
+    paginator = Paginator(news, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'news.html', {'page_obj': page_obj})

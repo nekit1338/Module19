@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends 'menu.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Игры</title>
+</head>
+<body>
+    {% block pagename %}<h1>Новости</h1>{% endblock %}
+    {% block menu %}{{ block.super }}{% endblock %}
+    {% block content %}
+        {% if page_obj %}
+            {% if page_obj.object_list %}
+                {% for new in page_obj %}
+                    <div class="news-item">
+                        <h2>{{ new.title }}</h2>
+                        <p class="news-date">{{ new.date }}</p>
+                        <p>{{ new.content }}</p>
+                        <hr>
+                    </div>
+                {% endfor %}
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; Первая</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+                        </span>
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+            {% else %}
+                <p>На этой странице нет новостей.</p> {# Сообщение, если страница пуста #}
+            {% endif %}
+        {% else %}
+            <p>Новости отсутствуют.</p>
+        {% endif %}
+    {% endblock %}
+</body>
+</html>
