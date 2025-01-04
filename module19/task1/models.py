@@ -105,8 +105,7 @@ class Users_of_shop(models.Model):
 #
 #  "Добавление игр в таблицу Game"
 #
-#  first_game = Game.objects.create(title="Cyberpunk 2077", cost=31, size=46.2, description="Game of the year",
-#                                   age_limited=True)
+#  first_game = Game.objects.create(title="Cyberpunk 2077", cost=31, size=46.2, description="Game of the year", age_limited=True)
 #  second_game = Game.objects.create(title="Mario", cost=5, size=0.5, description="Old Game", age_limited=False)
 #  third_game = Game.objects.create(title="Hitman", cost=12, size=36.6, description="Who kills Mark?", age_limited=True)
 #
@@ -114,8 +113,8 @@ class Users_of_shop(models.Model):
 #
 #  first_buyer.games.set([first_game, second_game, third_game])  # У первого покупателя есть все игры
 #
-#  second_game.buyers.add(second_buyer)  # У второго 2 игры
-#  third_game.buyers.add(second_buyer)
+#  second_game.buyer.add(second_buyer)  # У второго 2 игры
+#  third_game.buyer.add(second_buyer)
 #
 #  third_buyer.games.add(second_game)  # Третий покупатель (младше 18) имеет только одну игру "Mario"
 
@@ -196,10 +195,3 @@ class Users_of_shop(models.Model):
 #
 # users_after_date_count = Users_of_shop.objects.filter(registration_date__gt=date(2024, 1, 29)).count()
 # print(f"Количество пользователей, зарегистрированных после 29.1.2024: {users_after_date_count}")
-#
-#
-#
-#
-#
-#
-#
